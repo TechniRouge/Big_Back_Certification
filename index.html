@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Big Back Master Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f0f0f0;
+    }
+    h1 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .submit-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Big Back Master Quiz</h1>
+  <form id="quizForm">
+    
+    <!-- Questions -->
+    <div class="question">
+      <p>1. What is the first rule of Big Back Club?</p>
+      <label><input type="radio" name="q1" value="A"> No skipping back day</label><br>
+      <label><input type="radio" name="q1" value="B"> Flex only in mirrors</label><br>
+      <label><input type="radio" name="q1" value="C"> Chicken only on Tuesdays</label>
+    </div>
+
+    <div class="question">
+      <p>2. What's the best pull exercise?</p>
+      <label><input type="radio" name="q2" value="A"> Lat pulldowns</label><br>
+      <label><input type="radio" name="q2" value="B"> Pull-ups</label><br>
+      <label><input type="radio" name="q2" value="C"> Tricep dips</label>
+    </div>
+
+    <div class="question">
+      <p>3. What snack fuels the Big Backs?</p>
+      <label><input type="radio" name="q3" value="A"> Unseasoned chicken and glory</label><br>
+      <label><input type="radio" name="q3" value="B"> Whey protein brownies</label><br>
+      <label><input type="radio" name="q3" value="C"> Raw eggs and pre-workout</label>
+    </div>
+
+    <!-- Add 12 more questions below -->
+    <div class="question"><p>4. Certified width of a Big Back?</p><label><input type="radio" name="q4" value="A"> As wide as the canyon</label><br><label><input type="radio" name="q4" value="B"> As wide as respect demands</label><br><label><input type="radio" name="q4" value="C"> At least 3 pull-ups wide</label></div>
+
+    <div class="question"><p>5. Ideal rep range?</p><label><input type="radio" name="q5" value="A"> 1-3</label><br><label><input type="radio" name="q5" value="B"> 8-12</label><br><label><input type="radio" name="q5" value="C"> 20-25</label></div>
+
+    <div class="question"><p>6. What’s a big back made of?</p><label><input type="radio" name="q6" value="A"> Muscle and steel</label><br><label><input type="radio" name="q6" value="B"> Chicken and pain</label><br><label><input type="radio" name="q6" value="C"> Determination and dumbbells</label></div>
+
+    <div class="question"><p>7. Best time to train?</p><label><input type="radio" name="q7" value="A"> Morning</label><br><label><input type="radio" name="q7" value="B"> Night</label><br><label><input type="radio" name="q7" value="C"> All the time</label></div>
+
+    <div class="question"><p>8. Traditional greeting?</p><label><input type="radio" name="q8" value="A"> Back slap and nod</label><br><label><input type="radio" name="q8" value="B"> Flex and turn</label><br><label><input type="radio" name="q8" value="C"> Gym bro fist bump</label></div>
+
+    <div class="question"><p>9. Required accessory?</p><label><input type="radio" name="q9" value="A"> Lifting belt</label><br><label><input type="radio" name="q9" value="B"> Chalk</label><br><label><input type="radio" name="q9" value="C"> Headphones</label></div>
+
+    <div class="question"><p>10. Secret to growth?</p><label><input type="radio" name="q10" value="A"> Consistency</label><br><label><input type="radio" name="q10" value="B"> Supplements</label><br><label><input type="radio" name="q10" value="C"> Screaming at weights</label></div>
+
+    <div class="question"><p>11. Most aesthetic muscle?</p><label><input type="radio" name="q11" value="A"> Biceps</label><br><label><input type="radio" name="q11" value="B"> Lats</label><br><label><input type="radio" name="q11" value="C"> Traps</label></div>
+
+    <div class="question"><p>12. Post-workout ritual?</p><label><input type="radio" name="q12" value="A"> Ice bath</label><br><label><input type="radio" name="q12" value="B"> Flex in mirror</label><br><label><input type="radio" name="q12" value="C"> Eat 2 chickens</label></div>
+
+    <div class="question"><p>13. Best back finisher?</p><label><input type="radio" name="q13" value="A"> Deadlifts</label><br><label><input type="radio" name="q13" value="B"> Bent-over rows</label><br><label><input type="radio" name="q13" value="C"> Resistance band curls</label></div>
+
+    <div class="question"><p>14. Big Back motto?</p><label><input type="radio" name="q14" value="A"> Flex hard or go home</label><br><label><input type="radio" name="q14" value="B"> Width over everything</label><br><label><input type="radio" name="q14" value="C"> Strength through suffering</label></div>
+
+    <div class="question"><p>15. When are you done training?</p><label><input type="radio" name="q15" value="A"> When I say so</label><br><label><input type="radio" name="q15" value="B"> When the lat pump tells me</label><br><label><input type="radio" name="q15" value="C"> Never</label></div>
+
+    <button type="submit" class="submit-btn">Submit Quiz</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    const answers = {
+      q1: "A",
+      q2: "B",
+      q3: "C",
+      q4: "A",
+      q5: "B",
+      q6: "B",
+      q7: "C",
+      q8: "A",
+      q9: "C",
+      q10: "A",
+      q11: "B",
+      q12: "B",
+      q13: "A",
+      q14: "B",
+      q15: "C"
+    };
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let score = 0;
+      for (let i = 1; i <= 15; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && selected.value === answers[`q${i}`]) {
+          score++;
+        }
+      }
+      const result = document.getElementById("result");
+      if (score === 15) {
+        result.textContent = "✅ Certified! You are a true Big Back Master!";
+      } else {
+        result.textContent = `❌ You scored ${score}/15. Keep training and try again!`;
+      }
+    });
+  </script>
+
+  <!-- 
+    // Answer Key:
+    // Q1: A - No skipping back day
+    // Q2: B - Pull-ups
+    // Q3: C - Raw eggs and pre-workout
+    // Q4: A - As wide as the canyon
+    // Q5: B - 8-12
+    // Q6: B - Chicken and pain
+    // Q7: C - All the time
+    // Q8: A - Back slap and nod
+    // Q9: C - Headphones
+    // Q10: A - Consistency
+    // Q11: B - Lats
+    // Q12: B - Flex in mirror
+    // Q13: A - Deadlifts
+    // Q14: B - Width over everything
+    // Q15: C - Never
+  -->
+
+</body>
+</html>
