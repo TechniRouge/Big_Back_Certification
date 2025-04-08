@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Big Back Certification</title>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 1em 0 0.5em;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 0.5em;
+      margin-bottom: 1em;
+    }
+    button {
+      padding: 0.7em 1.2em;
+      font-size: 1em;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Big Back Certification Quiz</h1>
+  <form id="quizForm">
+    <label>Name:</label>
+    <input type="text" id="name" required>
+
+    <label>1. What is the minimum certified width of a Big Back?</label>
+    <select id="q1">
+      <option value="">-- Choose --</option>
+      <option value="a">12 inches</option>
+      <option value="b">36 inches</option>
+      <option value="c">As wide as respect demands</option>
+      <option value="d">Big enough to block out the sun</option>
+    </select>
+
+    <label>2. What is the traditional greeting among Big Back professionals?</label>
+    <select id="q2">
+      <option value="">-- Choose --</option>
+      <option value="a">A strong nod</option>
+      <option value="b">Flex and turn</option>
+      <option value="c">Back bump</option>
+      <option value="d">“Wide respects wide”</option>
+    </select>
+
+    <label>3. What snack fuels certified Big Backs?</label>
+    <select id="q3">
+      <option value="">-- Choose --</option>
+      <option value="a">Beef jerky</option>
+      <option value="b">Whey protein bars</option>
+      <option value="c">A single raw egg</option>
+      <option value="d">Unseasoned chicken and glory</option>
+    </select>
+
+    <button type="submit">Submit Quiz</button>
+  </form>
+
+  <div id="result" class="hidden"></div>
+
+  <script>
+    // Initialize EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY_HERE");
+
+    const correctAnswers = {
+      q1: "d",
+      q2: "d",
+      q3: "d"
+    };
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const answers = {
+        q1: document.getElementById("q1").value,
+        q2: document.getElementById("q2").value,
+        q3: document.getElementById("q3").value
+      };
+
+      let score = 0;
+      let total = Object.keys(correctAnswers).length;
+
+      for (let key in correctAnswers) {
+        if (answers[key] === correctAnswers[key]) {
+          score++;
+        }
+      }
+
+      let percent = (score / total) * 100;
+
+      if (percent >= 80) {
+        // Send via EmailJS
+        emailjs.send(":Big_back", "template_0br65x8", {
+          user_name: name,
+          score: percent + "%",
+          answers: JSON.stringify(answers)
+        }).then(function() {
+          document.getElementById("result").classList.remove("hidden");
+          document.getElementById("result").innerText =
+            "Congratulations! You're now Big Back Certified.";
+          document.getElementById("quizForm").reset();
+        }, function(error) {
+          alert("Something went wrong sending your certification: " + error.text);
+        });
+      } else {
+        document.getElementById("result").classList.remove("hidden");
+        document.getElementById("result").innerText =
+          "Sorry, you did not pass. Please train your back and try again.";
+      }
+    });
+  </script>
+</body>
+</html>
